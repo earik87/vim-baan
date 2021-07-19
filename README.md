@@ -6,9 +6,9 @@ Features; Syntax highlighting, indentation, quick marking.
 
 ## Installation
 
-You can use Vim's built-in package support.
+- You can use Vim's built-in package support.(Vim 8.0 onwards)
 
-    $HOME/vimfiles/pack/plugins/start/vim-baan
+`git clone https://github.com/earik87/vim-baan ~/.vim/pack/plugins/start/vim-baan`
 
 ## Quick marking
 
