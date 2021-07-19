@@ -21,3 +21,7 @@ Shortcuts for quick marking;
 - Old (".o") - F6
 - Start old (".so") - F7
 - End old (".eo") - F8
+
+If the marker does not have the right solution number, then you can set this variable manually.
+
+`let b:project = "#1234567"`
