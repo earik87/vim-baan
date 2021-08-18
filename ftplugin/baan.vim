@@ -8,7 +8,6 @@ let b:baan_inv_loaded = "yes"
 " Settings
 setlocal shiftwidth=8
 setlocal softtabstop=0
-setlocal lines=35 columns=90
 
 " This inserts automatically the commented line for the new lines. 
 setlocal comments=b:\|*
