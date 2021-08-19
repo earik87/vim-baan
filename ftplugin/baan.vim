@@ -1,6 +1,6 @@
 if exists("b:baan_inv_loaded")
-  " Script is already loaded
-  finish
+    " Script is already loaded
+    finish
 endif
 
 let b:baan_inv_loaded = "yes"
@@ -29,6 +29,7 @@ setlocal iskeyword+=-
 " should only be executed for readonly files. 
 let b:project = "#12345" "Marker to be used when you press f3, f4, f5...
 
+"``````````` Functions ```````````
 "search from back |* SOL". Regular expressions are tricky. 
 "For more info; help pattern.
 function SearchForLastSolutionNumber()
@@ -42,12 +43,30 @@ function SearchForLastSolutionNumber()
 	else
 		let l:solnumber = strpart(getline(l:markerposition), 7, 7)
 	endif
-	
+
 	if l:solnumber != 0
 		return l:solnumber
 	else
 		return 0
 	endif
+endfunction
+
+function CommentLine()
+	:normal! 0i|
+endfunction
+
+" Function Delete all behind the |* and ends with an n or o
+function UncommentLine()
+	let s = getline(line("."))
+	" Check if first character is a pipe
+
+	if strpart(s, 0, 1) == "|"
+		.s/|/
+	endif
+	" Delete everything behand the |# signe, as long as it ends on n or o
+	exe ".s/\|#.*[on]\\>//e" 
+	" Clean up whithe spaces
+	.s/\s*$//e
 endfunction
 
 "Only search for last solution number function for non-read only baan files.
@@ -64,14 +83,15 @@ if !&readonly
 	endif
 endif
 
-"Mappings for adding quick markers in the script. A better keyboard shortcut can
-"be selected in the future.
-noremap <F3> :let @v="\|" . b:project . "." . "n"<CR>80A <ESC>65\|C<ESC>"vp:.ret!<CR><CR>
-noremap <F4> :let @v="\|" . b:project . "." . "sn"<CR>80A <ESC>65\|C<ESC>"vp:.ret!<CR><CR>
-noremap <F5> :let @v="\|" . b:project . "." . "en"<CR>80A <ESC>65\|C<ESC>"vp:.ret!<CR><CR>
+"Mappings for adding quick markers in the script. 
+noremap <silent> <F1> :let @v="\|" . b:project . "." . "sn"<CR>80A <ESC>65\|C<ESC>"vp:.ret!<CR><CR>
+noremap <silent> <F2> :let @v="\|" . b:project . "." . "en"<CR>80A <ESC>65\|C<ESC>"vp:.ret!<CR><CR>
+noremap <silent> <F3> :let @v="\|" . b:project . "." . "n"<CR>80A <ESC>65\|C<ESC>"vp:.ret!<CR><CR>
+noremap <silent> <F4> :let @v="\|" . b:project . "." . "o"<CR>80A <ESC>65\|C<ESC>"vp:.ret!<CR><CR>
+noremap <silent> <F5> :let @v="\|" . b:project . "." . "so"<CR>80A <ESC>65\|C<ESC>"vp:.ret!<CR><CR>
+noremap <silent> <F6> :let @v="\|" . b:project . "." . "eo"<CR>80A <ESC>65\|C<ESC>"vp:.ret!<CR><CR>
 
-noremap <F6> :let @v="\|" . b:project . "." . "o"<CR>80A <ESC>65\|C<ESC>"vp:.ret!<CR><CR>
-noremap <F7> :let @v="\|" . b:project . "." . "so"<CR>80A <ESC>65\|C<ESC>"vp:.ret!<CR><CR>
-noremap <F8> :let @v="\|" . b:project . "." . "eo"<CR>80A <ESC>65\|C<ESC>"vp:.ret!<CR><CR>
+noremap <silent> <F11> :cal CommentLine()<CR><CR>
+noremap <silent> <F12> :cal UncommentLine()<CR><CR>
 
 " end of script
