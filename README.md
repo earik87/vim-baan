@@ -15,12 +15,14 @@ Features; Syntax highlighting, indentation, quick marking.
 Quick marking has auto-detection of last solution number in the script. It will prompt a message about its status in the start-up. 
 
 Shortcuts for quick marking;
+- Start new (".sn") - F1
+- End new (".en") - F2
 - New (".n") - F3
-- Start new (".sn") - F4
-- End new (".en") - F5
-- Old (".o") - F6
-- Start old (".so") - F7
-- End old (".eo") - F8
+- Old (".o") - F4
+- Start old (".so") - F5
+- End old (".eo") - F6
+- Comment Line - F11
+- Uncomment Lines - F12
 
 If the marker does not have the right solution number, then you can set this variable manually.
 
