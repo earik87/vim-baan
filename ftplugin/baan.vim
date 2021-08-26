@@ -91,7 +91,23 @@ noremap <silent> <F4> :let @v="\|" . b:project . "." . "o"<CR>80A <ESC>65\|C<ESC
 noremap <silent> <F5> :let @v="\|" . b:project . "." . "so"<CR>80A <ESC>65\|C<ESC>"vp:.ret!<CR><CR>
 noremap <silent> <F6> :let @v="\|" . b:project . "." . "eo"<CR>80A <ESC>65\|C<ESC>"vp:.ret!<CR><CR>
 
+" Mappings for comment/uncomment line.
 noremap <silent> <F11> :cal CommentLine()<CR><CR>
 noremap <silent> <F12> :cal UncommentLine()<CR><CR>
+
+" Mappings for adding comment block.
+noremap <silent> cb	O|79a*80|DyypO|*
+
+" Baan menu.
+menu BD\ tools.\|\.\.\.\.\.\.\.\.sn<Tab>F1  <F1>
+menu BD\ tools.\|\.\.\.\.\.\.\.\.en<Tab>    <F2>
+menu BD\ tools.\|\.\.\.\.\.\.\.\.n<Tab>F3   <F3>
+menu BD\ tools.\|\.\.\.\.\.\.\.\.o<Tab>F4   <F4>
+menu BD\ tools.\|\.\.\.\.\.\.\.\.so<Tab>F5  <F5>
+menu BD\ tools.\|\.\.\.\.\.\.\.\.eo<Tab>F6  <F6>
+menu BD\ tools.CommentLine<Tab>F11	    <F11>
+menu BD\ tools.UncommentLine<Tab>F12	    <F12>
+" menu BD\ tools.Cleanup\ script<Tab>Alt+F12  <A-F12>	
+menu BD\ tools.Comment\ Block<Tab>cb	    cb
 
 " end of script
