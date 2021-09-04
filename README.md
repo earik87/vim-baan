@@ -1,6 +1,6 @@
 # vim-baan
  
-Baan development plugin for Vim. It is activated with the files having the extension `.bc` or `.cln`.
+Baan(a.k.a baan4gl or infor4gl language) development plugin for Vim. It is activated with the files having the extension `.bc` or `.cln`.
 
 Features; Syntax highlighting, indentation, quick marking.
 
