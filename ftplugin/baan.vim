@@ -14,7 +14,7 @@ setlocal comments=b:\|*
 
 " Vim commented out the lines with comment string below. This can be used for
 " commentary plugin.. 
-setlocal commentstring=\|*\%s
+setlocal commentstring=\|\%s
 
 " This makes sure we have status bar enabled for promp messages.
 setlocal laststatus=2
