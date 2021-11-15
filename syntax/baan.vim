@@ -2,7 +2,7 @@
 " Language:	Baan
 " Maintainer:	Erik Remmelzwaal (erik.remmelzwaal 0x40 ssaglobal.com)
 " Originally owned by: Erwin Smit / Her van de Vliert
-" Last change:  v1.17 2006/04/26 10:40:18
+" Last editted by: Enis Arik.
 
 " quit when a syntax file was already loaded
 if exists("b:current_syntax")
@@ -54,12 +54,12 @@ if exists("baan_fold") && baan_fold && exists("baan_fold_block") && baan_fold_bl
 	syn region  baanDLLUsage matchgroup=baan3gl         start="^\z(\s*\)dllusage\>"       end="^\z1enddllusage\>" fold contains=baanNumber,baanConstant,baanType
 	syn region  baanFunUsage matchgroup=baan3gl         start="^\z(\s*\)functionusage\>"  end="^\z1endfunctionusage\>" fold  contains=baanNumber,baanConstant,baanType
 	syn region  baanCondFold matchgroup=baanConditional start="^\z(\s*\)\(case\>\|default\>\)\>" end="^\z1endcase\>" end="^\z1\(case\>\|default\>\)"me=s-1 transparent fold keepend extend
-	syn keyword baanConditional then else endif while endwhile endfor case endcase 
+	syn keyword baanConditional then else endif while endwhile endfor case endcase elif 
 	syn match   baanConditional "\<on case\>"
 else
 	syn match   baanConditional "\<for\>" contains=baansql
 	syn match   baanConditional "\<on case\>"
-	syn keyword baanConditional if then else endif while endwhile endfor case endcase default
+	syn keyword baanConditional if then else endif while endwhile endfor case endcase default elif
 	syn region  baanDLLUsage matchgroup=baan3gl start="\<dllusage\>" end="\<enddllusage\>" contains=baanNumber,baanConstant,baanType
 	syn region  baanFunUsage matchgroup=baan3gl start="\<functionusage\>" end="\<endfunctionusage\>" contains=baanNumber,baanConstant,baanType
 endif
