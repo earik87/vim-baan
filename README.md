@@ -1,18 +1,16 @@
 # vim-baan
  
-Baan(a.k.a baan4gl or infor4gl language) development plugin for Vim. It is activated with the files having the extension `.bc` or `.cln`.
+Baan development plugin for Vim. It is activated with the files having the extension `.bc` or `.cln`.
 
 Features; Syntax highlighting, indentation, quick marking.
 
 ## Installation
-
-- You can use Vim's built-in package support.(Vim 8.0 onwards)
+- Requirement; Vim 8.0 or a higher version.
+- You can use Vim's built-in package support.
 
 `git clone https://github.com/earik87/vim-baan ~/.vim/pack/plugins/start/vim-baan`
 
 ## Quick marking
-
-Quick marking has auto-detection of last solution number in the script. It will prompt a message about its status in the start-up. 
 
 Shortcuts for quick marking;
 - Start new (".sn") - F1
