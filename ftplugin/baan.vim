@@ -205,8 +205,8 @@ noremap <silent> <F6> 0i\|<ESC>:let @v="\|" . b:project . "." . "eo"<CR>80A <ESC
 
 " Smart Marking. This is able to mark selected lines or single line.
 " see h c^u for what :<c-u> does. It avoids running MarkNew() for each line. 
-noremap <silent> <F7> :<c-u>:cal MarkAsNew()<CR>
-noremap <silent> <F8> :<c-u>:cal MarkAsOld()<CR>
+noremap <silent> mn :<c-u>:cal MarkAsNew()<CR>
+noremap <silent> mo :<c-u>:cal MarkAsOld()<CR>
 
 " Mappings for comment/uncomment line.                          
 noremap <silent> <F11>	:cal	CommentLine()<CR><CR>
@@ -225,8 +225,8 @@ menu BD\ tools.\|\.\.\.\.\.\.\.\.n<Tab>F3   <F3>
 menu BD\ tools.\|\.\.\.\.\.\.\.\.o<Tab>F4   <F4>
 menu BD\ tools.\|\.\.\.\.\.\.\.\.so<Tab>F5  <F5>
 menu BD\ tools.\|\.\.\.\.\.\.\.\.eo<Tab>F6  <F6>
-menu BD\ tools.MarkAsNew<Tab>F7		    <F7>
-menu BD\ tools.MarkAsOld<Tab>F8		    <F8>
+menu BD\ tools.MarkAsNew<Tab>mn		    mn
+menu BD\ tools.MarkAsOld<Tab>mo		    mo
 menu BD\ tools.CommentLine<Tab>F11	    <F11>
 menu BD\ tools.UncommentLine<Tab>F12	    <F12>
 menu BD\ tools.Comment\ Block<Tab>cb	    cb
