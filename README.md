@@ -2,7 +2,7 @@
  
 Baan development plugin for Vim. It is activated with the files having the extension `.bc` or `.cln`.
 
-Features; Syntax highlighting, indentation, quick marking.
+Features; Syntax highlighting, indentation, quick marking, solution number tracking. 
 
 ## Installation
 - Requirement; Vim 8.0 or a higher version.
@@ -24,3 +24,4 @@ Shortcuts for quick marking;
 - Comment Line - F11
 - Uncomment Lines - F12
 - Change marker - cm
+- Comment block - cb
