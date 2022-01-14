@@ -1,9 +1,3 @@
-" Vim syntax file"
-" Language:	Baan
-" Maintainer:	Erik Remmelzwaal (erik.remmelzwaal 0x40 ssaglobal.com)
-" Originally owned by: Erwin Smit / Her van de Vliert
-" Last editted by: Enis Arik.
-
 " quit when a syntax file was already loaded
 if exists("b:current_syntax")
     finish
@@ -12,9 +6,9 @@ endif
 "********************************** Lexical setting ***************************"
 syn case ignore
 setlocal iskeyword+=.
-"setlocal ignorecase 	"This is not a local yet ;-(
-" Identifier
+setlocal foldmethod=syntax
 syn match   baanIdentifier "\<\k\+\>"
+syn sync minlines=100
 
 "************************************* 3GL ************************************"
 syn match   baan3glpre "#ident\>"
@@ -111,11 +105,6 @@ else
 	" update
 	syn keyword baansql update updateempty updateerror updateeos endupdate
 endif
-
-setlocal foldmethod=syntax
-"syn sync fromstart
-syn sync minlines=100
-
 
 "These are bshell functions
 if exists("baan_obsolete")
@@ -869,6 +858,7 @@ syn match baan4glh "form\.other:"
 syn match baan4gl  "init\.form:"
 syn match baan4gl  "before\.form:"
 syn match baan4gl  "after\.form:"
+syn match baan4gl  "after\.form\.read:"
 
 " Choice section
 syn match baan4glh "choice\.start\.set:"
@@ -1003,20 +993,8 @@ syn match  baanNumber		"\<\-\=\.\d\+\>"
 syn match   baanOpenStringError +^[^^"]+ display contained excludenl
 syn region  baanString	start=+"+  skip=+""+  end=+"+ end=+^[^^]+ contains=baanOpenStringError keepend
 
-" Comment"
-syn match   baanComment "|$"
-syn match   baanComment "|.$"
-syn match   baanComment "|[^ ]"
-syn match   baanComment	"|[^#].*[^ ]"
-syn match   baanComment "^|#lra.*$"
-syn match   baanComment "^|#mdm.*$"
-syn match   baanComment "^|#N\=o\=Include.*$"
-
 " Comment out everything starts with divider (|). 
 syn region  baanComment start="|" end="$" 
-
-" Oldcode"
-syn match   baanUncommented	"^|[^*#].*[^ ]"
 
 " DLL section
 " SpaceError"
@@ -1904,7 +1882,6 @@ hi def link baanOpenStringError	Error
 hi def link baanConstant	Constant
 hi def link baanComment		Comment
 hi def link baanCommenth	Comment
-hi def link baanUncommented	Comment
 hi def link baanDLLUsage	Comment
 hi def link baanFunUsage	Comment
 hi def link baanIdentifier	Normal
