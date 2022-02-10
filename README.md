@@ -16,6 +16,7 @@ Vim-baan requires at least Vim 8.0. (Neovim is not tested, yet).
 vim-baan follows the standard runtime path structure. 
 
 To install with Vim 8 packages;
+
 `git clone https://github.com/earik87/vim-baan ~/.vim/pack/plugins/start/vim-baan`
 
 ## Quick marking
