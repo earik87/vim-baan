@@ -2,12 +2,20 @@
  
 Baan development plugin for Vim. It is activated with the files having the extension `.bc` or `.cln`.
 
-Features; Syntax highlighting, indentation, quick marking, solution number tracking. 
+## Features
+- Syntax highlighting. 
+- Indentation. 
+- Smart marking.
+- Solution number tracking. 
 
 ## Installation
-- Requirement; Vim 8.0 or a higher version.
-- You can use Vim's built-in package support.
+Vim-baan requires at least Vim 8.0. (Neovim is not tested, yet).
 
+[The latest stable release](https://github.com/earik87/vim-baan/releases/latest) is the recommended version to use. If you want to use the master branch instead, please be aware that it is a development branch.
+
+vim-baan follows the standard runtime path structure. 
+
+To install with Vim 8 packages;
 `git clone https://github.com/earik87/vim-baan ~/.vim/pack/plugins/start/vim-baan`
 
 ## Quick marking
