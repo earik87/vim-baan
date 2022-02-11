@@ -86,25 +86,25 @@ function MarkAsNew()
 	if (l:StartLine == l:EndLine) || (one_line_selected) 
 		execute "normal! g_"
 		if virtcol(".") < 63
-			execute "normal! 0\<esc>80A \<ESC>64\|i" l:NewMarkerOneLine
+			execute "normal! 0\<esc>80A \<ESC>64\|C" l:NewMarkerOneLine			        
 		else
-			execute "normal! O\<esc>80A \<ESC>64\|i" l:StartNewMarker
-			execute "normal! jo\<esc>80A \<ESC>64\|i" l:EndNewMarker
+			execute "normal! O\<esc>80A \<ESC>64\|C" l:StartNewMarker
+			execute "normal! jo\<esc>80A \<ESC>64\|C" l:EndNewMarker
 		endif
 	else
 		execute "normal! ". l:StartLine. "gg" . "g_"
 		if virtcol(".") < 63
-		    execute "normal! 0\<esc>80A \<ESC>64\|i" l:StartNewMarker
+		    execute "normal! 0\<esc>80A \<ESC>64\|C" l:StartNewMarker
 		else
-		    execute "normal! O\<esc>80A \<ESC>64\|i" l:StartNewMarker
+		    execute "normal! O\<esc>64A \<ESC>64\|C" l:StartNewMarker
 		    let l:EndLine = l:EndLine + 1
 		endif
 
 		execute "normal! ". l:EndLine. "gg" . "g_"
 		if virtcol(".") < 63
-		    execute "normal! 0\<esc>80A \<ESC>64\|i" l:EndNewMarker
+		    execute "normal! 0\<esc>80A \<ESC>64\|C" l:EndNewMarker
 		else
-		    execute "normal! o\<esc>80A \<ESC>64\|i" l:EndNewMarker
+		    execute "normal! o\<esc>64A \<ESC>64\|C" l:EndNewMarker
 		endif
 	endif
 
@@ -129,18 +129,18 @@ function MarkAsOld()
 	if (l:StartLine == l:EndLine) || (one_line_selected) 
 		execute "normal! g_"
 		if virtcol(".") < 63
-			execute "normal! 0i\|\<esc>80A \<ESC>64\|i" l:OldMarkerOneLine
+			execute "normal! 0i\|\<esc>80A \<ESC>64\|C" l:OldMarkerOneLine
 		else
-			execute "normal! O\<esc>i\|\<esc>80A \<ESC>64\|i" l:StartOldMarker
+			execute "normal! O\<esc>i\|\<esc>80A \<ESC>64\|C" l:StartOldMarker
 			execute "normal! \<esc>j0i\|\<esc>"
-			execute "normal! o\|\<esc>80A \<ESC>64\|i" l:EndOldMarker
+			execute "normal! o\|\<esc>80A \<ESC>64\|C" l:EndOldMarker
 		endif
 	else
 		execute "normal! ". l:StartLine. "gg" . "g_"
 		if virtcol(".") < 63
-		    execute "normal! 0\<esc>80A \<ESC>64\|i" l:StartOldMarker
+		    execute "normal! 0\<esc>80A \<ESC>64\|C" l:StartOldMarker
 		else
-		    execute "normal! O\<esc>80A \<ESC>64\|i" l:StartOldMarker
+		    execute "normal! O\<esc>80A \<ESC>64\|C" l:StartOldMarker
 		    let l:EndLine = l:EndLine + 1
 		endif
 		
@@ -152,9 +152,9 @@ function MarkAsOld()
 
 		execute "normal! ". l:EndLine. "gg" . "g_"
 		if virtcol(".") < 63
-		    execute "normal! 0\<esc>80A \<ESC>64\|i" l:EndOldMarker
+		    execute "normal! 0\<esc>80A \<ESC>64\|C" l:EndOldMarker
 		else
-		    execute "normal! o\|\<esc>80A \<ESC>64\|i" l:EndOldMarker
+		    execute "normal! o\|\<esc>80A \<ESC>64\|C" l:EndOldMarker
 		endif
 	endif
 	
@@ -186,6 +186,7 @@ endfunction
 function ChangeMarker()
     call inputsave()
     echo "Current marker: " . b:project
+    echo "Example marker: " . "#800-123456 " . "or " . "#lnd2-12345"
     let l:returnstring = input("Enter new marker: ")
     if l:returnstring != ""
 	let b:project = l:returnstring
