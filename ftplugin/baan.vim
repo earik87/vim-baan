@@ -29,13 +29,13 @@ setlocal iskeyword+=-
 " project name for marking; possibly something like lnd2-12345, or 800-12345.
 " This will be determined from the top of the script, from an indentation.. This
 " should only be executed for readonly files. 
-let b:project = "" "Marker to be used when you press f3, f4, f5...
+let g:marker = "" "Marker to be used when you press f3, f4, f5...
 
 " Create title and add marker into it.
 setglobal titlestring=
 setglobal titlestring+=%f
 setglobal titlestring+=\ marker:
-setglobal titlestring+=\ %{b:project}
+setglobal titlestring+=\ %{g:marker}
 
 "``````````` Functions ```````````
 "search from back |* SOL". Regular expressions are tricky. 
@@ -64,16 +64,19 @@ if !&readonly
 	let b:solutionnumber = SearchForLastSolutionNumber()
 
 	if b:solutionnumber == 0 
-		let b:project = ""
+		let g:marker = ""
 	else
-		let b:project = "#" . b:solutionnumber
+		let g:marker = "#" . b:solutionnumber
 	endif
+	
+	"Go to the beginning of the line.
+	execute "normal! gg"
 endif
 
 function MarkAsNew()
-	let l:StartNewMarker = "\|" . b:project . ".sn"
-	let l:EndNewMarker = "\|" . b:project . ".en"
-	let l:NewMarkerOneLine = "\|" . b:project . ".n"
+	let l:StartNewMarker = "\|" . g:marker . ".sn"
+	let l:EndNewMarker = "\|" . g:marker . ".en"
+	let l:NewMarkerOneLine = "\|" . g:marker . ".n"
 	let l:StartLine =  line("'<")
 	let l:EndLine = line("'>")
 	let current_cursor = line('.')
@@ -114,9 +117,9 @@ function MarkAsNew()
 endfunction
 
 function MarkAsOld()
-	let l:StartOldMarker = "\|" . b:project . ".so"
-	let l:EndOldMarker = "\|" . b:project . ".eo"
-	let l:OldMarkerOneLine = "\|" . b:project . ".o"
+	let l:StartOldMarker = "\|" . g:marker . ".so"
+	let l:EndOldMarker = "\|" . g:marker . ".eo"
+	let l:OldMarkerOneLine = "\|" . g:marker . ".o"
 	let l:StartLine =  line("'<")
 	let l:EndLine = line("'>")
 	let current_cursor = line('.')
@@ -185,11 +188,11 @@ endfunction
 
 function ChangeMarker()
     call inputsave()
-    echo "Current marker: " . b:project
+    echo "Current marker: " . g:marker
     echo "Example marker: " . "#800-123456 " . "or " . "#lnd2-12345"
     let l:returnstring = input("Enter new marker: ")
     if l:returnstring != ""
-	let b:project = l:returnstring
+	let g:marker = l:returnstring
     endif
 
     call inputrestore()
@@ -197,12 +200,12 @@ endfunction
 
 "`````````````````````````````` Mappings ```````````````````````````````````````
 "Mappings for adding quick markers in the script. 
-noremap <silent> <F1> :let @v="\|" . b:project . "." . "sn"<CR>80A <ESC>65\|C<ESC>"vp<CR>
-noremap <silent> <F2> :let @v="\|" . b:project . "." . "en"<CR>80A <ESC>65\|C<ESC>"vp<CR>
-noremap <silent> <F3> :let @v="\|" . b:project . "." . "n"<CR>80A <ESC>65\|C<ESC>"vp<CR>
-noremap <silent> <F4> 0i\|<ESC>:let @v="\|" . b:project . "." . "o"<CR>80A <ESC>65\|C<ESC>"vp<CR>
-noremap <silent> <F5> 0i\|<ESC>:let @v="\|" . b:project . "." . "so"<CR>80A <ESC>65\|C<ESC>"vp<CR>
-noremap <silent> <F6> 0i\|<ESC>:let @v="\|" . b:project . "." . "eo"<CR>80A <ESC>65\|C<ESC>"vp<CR>
+noremap <silent> <F1> :let @v="\|" . g:marker . "." . "sn"<CR>80A <ESC>65\|C<ESC>"vp<CR>
+noremap <silent> <F2> :let @v="\|" . g:marker . "." . "en"<CR>80A <ESC>65\|C<ESC>"vp<CR>
+noremap <silent> <F3> :let @v="\|" . g:marker . "." . "n"<CR>80A <ESC>65\|C<ESC>"vp<CR>
+noremap <silent> <F4> 0i\|<ESC>:let @v="\|" . g:marker . "." . "o"<CR>80A <ESC>65\|C<ESC>"vp<CR>
+noremap <silent> <F5> 0i\|<ESC>:let @v="\|" . g:marker . "." . "so"<CR>80A <ESC>65\|C<ESC>"vp<CR>
+noremap <silent> <F6> 0i\|<ESC>:let @v="\|" . g:marker . "." . "eo"<CR>80A <ESC>65\|C<ESC>"vp<CR>
 
 " Smart Marking. This is able to mark selected lines or single line.
 " see h c^u for what :<c-u> does. It avoids running MarkNew() for each line. 
@@ -216,7 +219,7 @@ noremap <silent> <F12>	:cal	UncommentLine()<CR><CR>
 " Mappings for adding comment block.
 noremap <silent> cb O|79a*80|DyypO|*
 
-" Mappings for changing b:project which is used for quick marker.
+" Mappings for changing g:marker which is used for quick marker.
 noremap <silent> cm	:cal    ChangeMarker()<CR><CR>
 
 " Baan menu.
