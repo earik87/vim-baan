@@ -11,9 +11,7 @@ Baan development plugin for Vim. It is activated with the files having the exten
 ## Installation
 Vim-baan requires at least Vim 8.0. (Neovim is not tested, yet).
 
-[The latest stable release](https://github.com/earik87/vim-baan/releases/latest) is the recommended version to use. If you want to use the master branch instead, please be aware that it is a development branch.
-
-vim-baan follows the standard runtime path structure. 
+Vim-baan follows the standard runtime path structure. 
 
 To install with Vim 8 packages;
 
