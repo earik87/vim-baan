@@ -1,4 +1,7 @@
-# vim-baan
+# Archived project. No maintenance.
+This project is not maintained anymore. You may fork and make your own changes, freely.
+
+# Vim-baan
  
 Baan development plugin for Vim. It is activated with the files having the extension `.bc` or `.cln`.
 
